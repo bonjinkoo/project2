@@ -1,6 +1,6 @@
                                      GRADER
 
-Name of student running submit: Bon Jin Koo
+Name of student running submit: Bon Jin Koo HERRO
 Login of student running submit: cs61b-kz
 
 Second team member's name: Joe Choi
