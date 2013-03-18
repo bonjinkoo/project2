@@ -1,0 +1,55 @@
+Pseudo Code (Joe and Bonjin) 
+
+Class: Machine Player
+
+	instance variable: internalgameboard (board object)
+
+	constructor: MachinePlayer(int color)
+
+	constructor: MachinePlayer(int color, int searchDepth)
+
+	method: Move chooseMove()
+		
+		helper method: mimimax() //along with alpha-beta pruning, runs through all possible moves
+
+			(pro-tip) make sure that you take off the piece after you put it on and check all the possible moves
+
+			(pro-tip) feed the "searchDepth" from the constructor into the minimax function so it nows how far to go
+
+		helper method: giveScore() // looks at the leaves of the tree and assigns a score to all of them
+
+		helper method: update() //updates the internal game board (used 3x total)
+
+	method: boolean opponentMove(Move m)
+
+		helper method: update() //updates the internal game board (used 3x total)
+
+	method: boolean forceMove(Move m) 
+
+		helper method: update() //updates the internal game board (used 3x total) 
+
+Class: Board
+
+	instance variable: 0 = empty
+	
+	instance variable: 1 = white
+
+	instance variable: 2 = black
+
+	constructor: [][] int Board()	
+
+	method: boolean ifCorner(Move m) //doesn't allow piece to be put on a corner
+
+	method: DList singleConnections(int piece) //returns a connection between two pieces
+
+	method: [depthfirstsearch] //will return all possible connections to a single point
+
+	method: boolean isNetwork(DList network x) //will tell you if that series of connections is a network
+
+	method: DList allPossibleMoves() //checks the current board and returns a DList of all the points where it would be legal for a white piece to put down white ieces or for a black piece to put down black pieces (make sure to check if piece is white or black first)
+
+Class: DList
+
+(import from hw)
+	 
+	
