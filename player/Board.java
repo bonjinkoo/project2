@@ -40,98 +40,97 @@ public class Board {
 	// and ONE other piece.
 	public DList singleConnections(int x, int y) {
 		DList connections = new DList();
-		connections.insertBack(x + y);
+		connections.insertBack("" + x + y);
 		int color = board[x][y];
 		if (board[x][y] != EMPTY) {
-			if (board[x][y] == color) {
-				// left
-				for (int i = x; x >= 0; i--) {
-					if (board[i][y] == color) {
-						connections.insertBack(i + y);
-						break;
-					} else if (board[i][y] != color) {
-						break;
-					}
+			// left
+			for (int i = x-1; i >= 0; i--) {
+				if (board[i][y] == color) {
+					connections.insertBack("" + i + y);
+					break;
+				} else if (board[i][y] != color && board[i][y] != EMPTY) {
+					break;
 				}
-				// right
-				for (int i = x; x <= 7; i++) {
-					if (board[i][y] == color) {
-						connections.insertBack(i + y);
-						break;
-					} else if (board[i][y] != color) {
-						break;
-					}
+			}
+			// right
+			for (int i = x+1; i <= 7; i++) {
+				if (board[i][y] == color) {
+					connections.insertBack("" + i + y);
+					break;
+				} else if (board[i][y] != color && board[i][y] != EMPTY) {
+					break;
 				}
-				// up
-				for (int i = y; y >= 0; i--) {
-					if (board[x][i] == color) {
-						connections.insertBack(x + i);
-						break;
-					} else if (board[x][i] != color) {
-						break;
-					}
+			}
+			// up
+			for (int i = y-1; i >= 0; i--) {
+				if (board[x][i] == color) {
+					connections.insertBack("" + x + i);
+					break;
+				} else if (board[x][i] != color && board[x][i] != EMPTY) {
+					break;
 				}
-				// down
-				for (int i = y; y <= 7; i++) {
-					if (board[x][i] == color) {
-						connections.insertBack(x + i);
-						break;
-					} else if (board[x][i] != color) {
-						break;
-					}
+			}
+			// down
+			for (int i = y+1; i <= 7; i++) {
+				if (board[x][i] == color) {
+					connections.insertBack("" + x + i);
+					break;
+				} else if (board[x][i] != color && board[x][i] != EMPTY) {
+					System.out.println("hi");
+					break;
 				}
-				// upper left
-				int j = x;
-				for (int i = y; y >= 0; i--) {
-					if (board[j][i] == color) {
-						connections.insertBack(j + i);
-						break;
-					} else if (board[j][i] != color) {
-						break;
-					} else if (j < 0 || i < 0) {
-						break;
-					}
-					j -= 1;
+			}
+			// upper left
+			int j = x-1;
+			for (int i = y-1; i >= 0 && j >= 0; i--) {
+				if (board[j][i] == color) {
+					connections.insertBack("" + j + i);
+					break;
+				} else if (board[j][i] != color && board[j][i] != EMPTY) {
+					break;
+				} else if (j < 0 || i < 0) {
+					break;
 				}
-				// upper right
-				j = x;
-				for (int i = y; y >= 0; i--) {
-					if (board[j][i] == color) {
-						connections.insertBack(j + i);
-						break;
-					} else if (board[j][i] != color) {
-						break;
-					} else if (j < 0 || i < 0) {
-						break;
-					}
-					j += 1;
+				j -= 1;
+			}
+			// upper right
+			j = x+1;
+			for (int i = y-1; i >= 0 && j <= 7; i--) {
+				if (board[j][i] == color) {
+					connections.insertBack("" + j + i);
+					break;
+				} else if (board[j][i] != color && board[j][i] != EMPTY) {
+					break;
+				} else if (j < 0 || i < 0) {
+					break;
 				}
-				// lower left
-				j = x;
-				for (int i = y; y <= 7; i++) {
-					if (board[j][i] == color) {
-						connections.insertBack(j + i);
-						break;
-					} else if (board[j][i] != color) {
-						break;
-					} else if (j < 0 || i < 0) {
-						break;
-					}
-					j -= 1;
+				j += 1;
+			}
+			// lower left
+			j = x-1;
+			for (int i = y+1; i <= 7 && j >= 0; i++) {
+				if (board[j][i] == color) {
+					connections.insertBack("" + j + i);
+					break;
+				} else if (board[j][i] != color && board[j][i] != EMPTY) {
+					break;
+				} else if (j < 0 || i < 0) {
+					break;
 				}
-				// lower right
-				j = x;
-				for (int i = y; y <= 7; i++) {
-					if (board[j][i] == color) {
-						connections.insertBack(j + i);
-						break;
-					} else if (board[j][i] != color) {
-						break;
-					} else if (j < 0 || i < 0) {
-						break;
-					}
-					j += 1;
+				j -= 1;
+			}
+			// lower right
+			j = x+1;
+			for (int i = y+1; i <= 7 && j <= 7; i++) {
+				if (board[j][i] == color) {
+					connections.insertBack("" + j + i);
+					break;
+				} else if (board[j][i] != color && board[j][i] != EMPTY) {
+					break;
+				} else if (j < 0 || i < 0) {
+					break;
 				}
+				j += 1;
 			}
 		}
 		return connections;
